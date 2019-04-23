@@ -22,7 +22,7 @@ public class RomanNumeralControllerTest {
 
     @Test
     public void testGetRomanNumeral() {
-        String input = "345324";
+        String input = "3453";
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
     }

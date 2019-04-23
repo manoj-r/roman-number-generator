@@ -2,30 +2,33 @@ package com.aem.exercise.romannumeral.service;
 
 
 import com.aem.exercise.romannumeral.dto.*;
+import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class RomanNumeralService {
 
-    public static String convertIntegertoRoman(int inputNumber) {
-        Context inputContext = new Context();
-        inputContext.setInput(inputNumber);
+    private List<Expression> romanExpressionGrammar;
 
-        List<Expression> romanExpressionGrammar = new ArrayList<>();
+    public RomanNumeralService() {
+        romanExpressionGrammar = new ArrayList<>();
         romanExpressionGrammar.add(new ThousandExpression());
         romanExpressionGrammar.add(new HundredExpression());
         romanExpressionGrammar.add(new TenExpression());
         romanExpressionGrammar.add(new OneExpression());
+    }
 
+    public String convertIntegertoRoman(int inputNumber) {
+        Context inputContext = new Context();
+        inputContext.setInput(inputNumber);
+
+        romanExpressionGrammar.stream().forEach(expression -> expression.superVinculize(inputContext));
+        romanExpressionGrammar.stream().forEach(expression -> expression.vinculize(inputContext));
         romanExpressionGrammar.stream().forEach(expression -> expression.interpret(inputContext));
 
-        return inputContext.getOutputValue();
+        return inputContext.getOutputValue().replaceAll("\\|\\|","");
     }
 
-    public static void main(String[] args) {
-        System.out.println("I&#773;");
-        System.out.println(new String(convertIntegertoRoman(4000).getBytes(), StandardCharsets.UTF_8));
-    }
 }

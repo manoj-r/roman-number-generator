@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "romannumeral")
 public class RomanNumeralController {
 
-
     private RomanNumeralService romanNumeralService;
 
     public RomanNumeralController(RomanNumeralService romanNumeralService) {
@@ -31,7 +30,7 @@ public class RomanNumeralController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getRomanNumeral(@RequestParam("query") String input) {
         int inputValue = Integer.parseUnsignedInt(input);
-        if (inputValue < 1 && inputValue > Integer.parseUnsignedInt("3999")) {
+        if (inputValue > 1 && inputValue <= Integer.parseUnsignedInt("2200000000")) {
             return ResponseEntity.ok(this.romanNumeralService.convertIntegertoRoman(inputValue));
         }
         return ResponseEntity.badRequest().build();

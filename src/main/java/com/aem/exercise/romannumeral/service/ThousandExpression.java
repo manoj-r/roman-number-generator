@@ -1,18 +1,16 @@
-package com.aem.exercise.romannumeral.dto;
+package com.aem.exercise.romannumeral.service;
 
 public class ThousandExpression extends Expression {
 
     protected String one() {
         return "M";
     }
-    protected String four() {
-        return "IV&#773;";
-    }
+    protected String four() { return ""; }
     protected String five() {
-        return "V&#773;";
+        return "";
     }
     protected String nine() {
-        return "IX&#773;";
+        return "";
     }
 
     protected int multiple() {

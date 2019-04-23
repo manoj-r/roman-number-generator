@@ -18,7 +18,7 @@ public class Context {
         return output.toString();
     }
 
-    public void append(String output) {
+    public void append(Object output) {
         if (null == this.output ) {
             this.output = new StringBuilder();
         }
