@@ -1,6 +1,8 @@
 package com.aem.exercise.romannumeral.controller;
 
+
 import com.aem.exercise.romannumeral.service.RomanNumeralService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +29,14 @@ public class RomanNumeralController {
      * @param input - input value to be converted to roman numeral
      * @return a roman numeral for given input
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity getRomanNumeral(@RequestParam("query") String input) {
-        int inputValue = Integer.parseUnsignedInt(input);
-        if (inputValue > 1 && inputValue <= Integer.parseUnsignedInt("2200000000")) {
-            return ResponseEntity.ok(this.romanNumeralService.convertIntegertoRoman(inputValue));
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE + ";charset=utf-8")
+    public ResponseEntity<String> getRomanNumeral(@RequestParam("query") String input) {
+        long inputValue = Long.parseLong(input);
+        if (inputValue >= 1 && inputValue <= 2200000000l) {
+            return ResponseEntity.ok(this.romanNumeralService.convertToRoman(inputValue));
         }
         return ResponseEntity.badRequest().build();
     }
+
+
 }

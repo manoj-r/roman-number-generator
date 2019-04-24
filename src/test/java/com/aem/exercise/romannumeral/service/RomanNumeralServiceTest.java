@@ -14,17 +14,17 @@ public class RomanNumeralServiceTest {
     }
 
     @Test
-    public void testConvertIntegertoRoman_Simple() {
-        Assert.assertEquals("CDXXXVI", romanNumeralService.convertIntegertoRoman(Integer.parseUnsignedInt("436")));
+    public void testconvertToRoman_Simple() {
+        Assert.assertEquals("CDXXXVI", romanNumeralService.convertToRoman(436l));
     }
 
     @Test
-    public void testConvertIntegertoRoman_Simple_OneDigit() {
-        Assert.assertEquals("VIII", romanNumeralService.convertIntegertoRoman(Integer.parseUnsignedInt("8")));
+    public void testconvertToRoman_Simple_OneDigit() {
+        Assert.assertEquals("VIII", romanNumeralService.convertToRoman(8l));
     }
 
     @Test
-    public void testConvertIntegertoRoman_Wiki() {
+    public void testconvertToRoman_Wiki() {
         /*
         39 = "Thirty nine" (XXX+IX) = XXXIX.
 
@@ -45,50 +45,48 @@ public class RomanNumeralServiceTest {
         *
         */
 
-        Assert.assertEquals("XXXIX", romanNumeralService.convertIntegertoRoman(39));
-        Assert.assertEquals("CCXLVI", romanNumeralService.convertIntegertoRoman(246));
-        Assert.assertEquals("CDXXI", romanNumeralService.convertIntegertoRoman(421));
-        Assert.assertEquals("CLX", romanNumeralService.convertIntegertoRoman(160));
-        Assert.assertEquals("CCVII", romanNumeralService.convertIntegertoRoman(207));
-        Assert.assertEquals("MLXVI", romanNumeralService.convertIntegertoRoman(1066));
-        Assert.assertEquals("MDCCLXXVI", romanNumeralService.convertIntegertoRoman(1776));
-        Assert.assertEquals("MCMLIV", romanNumeralService.convertIntegertoRoman(1954));
-        Assert.assertEquals("MCMXC", romanNumeralService.convertIntegertoRoman(1990));
-        Assert.assertEquals("MMXIV", romanNumeralService.convertIntegertoRoman(2014));
-        Assert.assertEquals("MMXIX", romanNumeralService.convertIntegertoRoman(2019));
-
-
+        Assert.assertEquals("XXXIX", romanNumeralService.convertToRoman(39));
+        Assert.assertEquals("CCXLVI", romanNumeralService.convertToRoman(246));
+        Assert.assertEquals("CDXXI", romanNumeralService.convertToRoman(421));
+        Assert.assertEquals("CLX", romanNumeralService.convertToRoman(160));
+        Assert.assertEquals("CCVII", romanNumeralService.convertToRoman(207));
+        Assert.assertEquals("I\u0305LXVI", romanNumeralService.convertToRoman(1066));
+        Assert.assertEquals("I\u0305DCCLXXVI", romanNumeralService.convertToRoman(1776));
+        Assert.assertEquals("I\u0305CMLIV", romanNumeralService.convertToRoman(1954));
+        Assert.assertEquals("I\u0305CMXC", romanNumeralService.convertToRoman(1990));
+        Assert.assertEquals("I\u0305I\u0305XIV", romanNumeralService.convertToRoman(2014));
+        Assert.assertEquals("I\u0305I\u0305XIX", romanNumeralService.convertToRoman(2019));
     }
 
     @Test
-    public void testConvertIntegertoRoman_Vinculum_Wiki(){
+    public void testconvertToRoman_Vinculum_Wiki(){
         /*
         IV = 4,000
         IVDCXXVII = 4,627
         XXV = 25,000
         XXVCDLIX = 25,459
          */
-        Assert.assertEquals("\u0305I\u0305V", romanNumeralService.convertIntegertoRoman(4000));
-        Assert.assertEquals("\u0305I\u0305VDCXXVII", romanNumeralService.convertIntegertoRoman(4627));
-        Assert.assertEquals("\u0305X\u0305X\u0305V", romanNumeralService.convertIntegertoRoman(25000));
-        Assert.assertEquals("\u0305X\u0305X\u0305VCDLIX", romanNumeralService.convertIntegertoRoman(25459));
+        Assert.assertEquals("I\u0305V\u0305", romanNumeralService.convertToRoman(4000));
+        Assert.assertEquals("I\u0305V\u0305DCXXVII", romanNumeralService.convertToRoman(4627));
+        Assert.assertEquals("X\u0305X\u0305V\u0305", romanNumeralService.convertToRoman(25000));
+        Assert.assertEquals("X\u0305X\u0305V\u0305CDLIX", romanNumeralService.convertToRoman(25459));
 
 
     }
 
     @Test
-    public void testConvertIntegertoRoman_SuperVinculum_Wiki(){
+    public void testconvertToRoman_SuperVinculum_Wiki(){
         /*
         VIII for 80,000 (or 800,000)
         XX for 200,000 (or 2,000,000)
          */
-        Assert.assertEquals("|\u0305V\u0305I\u0305I\u0305I|", romanNumeralService.convertIntegertoRoman(800000));
-        Assert.assertEquals("|\u0305X\u0305X|", romanNumeralService.convertIntegertoRoman(2000000));
+        Assert.assertEquals("|V\u0305I\u0305I\u0305I\u0305|", romanNumeralService.convertToRoman(800000));
+        Assert.assertEquals("|X\u0305X\u0305|", romanNumeralService.convertToRoman(2000000));
     }
 
     @Test
-    public void testConvertIntegertoRoman() {
-        Assert.assertEquals("\u0305I\u0305XCDLVI", romanNumeralService.convertIntegertoRoman(Integer.parseUnsignedInt("9456")));
+    public void testconvertToRoman() {
+        Assert.assertEquals("I\u0305X\u0305CDLVI", romanNumeralService.convertToRoman(9456));
     }
 
 }

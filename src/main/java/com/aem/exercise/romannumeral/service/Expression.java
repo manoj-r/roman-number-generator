@@ -23,10 +23,11 @@ public abstract class Expression {
         if (!nine().isEmpty()) {
             while (number.getInput() - (9 * multiple() * 100000) >= 0) {
                 number.append(VINCULAR_POWER);
-                number.append(OVERLINE);
+
                 number.append(nine().charAt(0));
                 number.append(OVERLINE);
                 number.append(nine().charAt(1));
+                number.append(OVERLINE);
                 number.append(VINCULAR_POWER);
                 number.setInput(number.getInput() - (9 * multiple() * 100000));
             }
@@ -34,8 +35,8 @@ public abstract class Expression {
         if (!five().isEmpty()) {
             while (number.getInput() - (5 * multiple() * 100000) >= 0) {
                 number.append(VINCULAR_POWER);
-                number.append(OVERLINE);
                 number.append(five());
+                number.append(OVERLINE);
                 number.append(VINCULAR_POWER);
                 number.setInput(number.getInput() - (5 * multiple() * 100000));
             }
@@ -43,18 +44,18 @@ public abstract class Expression {
         if (!four().isEmpty()) {
             while (number.getInput() - (4 * multiple() * 100000) >= 0) {
                 number.append(VINCULAR_POWER);
-                number.append(OVERLINE);
                 number.append(four().charAt(0));
                 number.append(OVERLINE);
                 number.append(four().charAt(1));
+                number.append(OVERLINE);
                 number.append(VINCULAR_POWER);
                 number.setInput(number.getInput() - (4 * multiple() * 100000));
             }
         }
         while (number.getInput() - (1 * multiple() * 100000) >= 0) {
             number.append(VINCULAR_POWER);
-            number.append(OVERLINE);
             number.append(one());
+            number.append(OVERLINE);
             number.append(VINCULAR_POWER);
             number.setInput(number.getInput() - (1 * multiple() * 100000));
         }
@@ -62,31 +63,30 @@ public abstract class Expression {
 
     public void vinculize(Context number) {
         while (number.getInput() - (9 * multiple() * 1000) >= 0) {
-            number.append(OVERLINE);
             number.append(nine().charAt(0));
             number.append(OVERLINE);
             number.append(nine().charAt(1));
+            number.append(OVERLINE);
             number.setInput(number.getInput() - (9 * multiple() * 1000));
         }
         while (number.getInput() - (5 * multiple() * 1000) >= 0) {
-            number.append(OVERLINE);
             number.append(five());
+            number.append(OVERLINE);
             number.setInput(number.getInput() - (5 * multiple() * 1000));
         }
         while (number.getInput() - (4 * multiple() * 1000) >= 0) {
-            number.append(OVERLINE);
             number.append(four().charAt(0));
             number.append(OVERLINE);
             number.append(four().charAt(1));
+            number.append(OVERLINE);
             number.setInput(number.getInput() - (4 * multiple() * 1000));
         }
-        if (number.getInput() > 4000 ) { // If condition to avoid ̅I instead of M
-            while (number.getInput() - (1 * multiple() * 1000) >= 0) {
-                number.append(OVERLINE);
-                number.append(one());
-                number.setInput(number.getInput() - (1 * multiple() * 1000));
-            }
+        while (number.getInput() - (1 * multiple() * 1000) >= 0) {
+            number.append(one());
+            number.append(OVERLINE);
+            number.setInput(number.getInput() - (1 * multiple() * 1000));
         }
+
     }
 
     public void interpret(Context number) {

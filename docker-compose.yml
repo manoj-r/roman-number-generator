@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  roman-numeral-app-container:
+    image: roman-numeral-app:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+

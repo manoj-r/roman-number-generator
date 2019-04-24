@@ -20,7 +20,7 @@ public class RomanNumeralService {
         romanExpressionGrammar.add(new OneExpression());
     }
 
-    public String convertIntegertoRoman(int inputNumber) {
+    public String convertToRoman(long inputNumber) {
         Context inputContext = new Context();
         inputContext.setInput(inputNumber);
 

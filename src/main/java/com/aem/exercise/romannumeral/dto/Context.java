@@ -2,15 +2,15 @@ package com.aem.exercise.romannumeral.dto;
 
 public class Context {
 
-    private int input;
+    private long input;
     private StringBuilder output;
 
 
-    public int getInput() {
+    public long getInput() {
         return input;
     }
 
-    public void setInput(int input) {
+    public void setInput(long input) {
         this.input = input;
     }
 
