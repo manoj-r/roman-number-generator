@@ -64,10 +64,16 @@ If you don't have Git installed and would like to install it - Refer this link t
 
         docker-compose build
         docker-compose up -d
+        
+- To access the application, use the below url in browser
+
+        http://localhost:8080
 
 - To stop the running process:
     
         docker-compose down
+   
+
         
 ## Package-Layout
              
@@ -118,13 +124,18 @@ Actuator http://localhost:8080/actuator is the hateos resource for all the manag
 
 ## Monitoring
 
-Thought Spring Boot Actuator provides necessary tools for Monitoring, this application uses Prometheus and grafana for visualization.
+Though Spring Boot Actuator provides necessary tools for Monitoring, this application uses Prometheus and grafana for visualization.
 This can be accessed from 
 
         http://localhost:3000 
 with credentials (admin/password). A dashboard has already been built and added to the project
 which should automatically when you run docker-compose.
 
+## Swagger
+
+This application also has integration with swagger and swagger-ui and the same can be accessed from
+
+        https://localhost:8080/swagger-ui.html
 
 ## Note
 
