@@ -50,8 +50,12 @@ public class RomanNumeralService {
          * This uses interpreter pattern where the input and output values are held in an object (here context)
          * and the values are updated for each pass.
          * */
-        romanExpressionGrammar.stream().forEach(expression -> expression.superVinculize(inputContext));
-        romanExpressionGrammar.stream().forEach(expression -> expression.vinculize(inputContext));
+        if (inputNumber > 3999) {
+            // Run the vincular operation only if number is greater than 3999.
+            // This check is added to avoid showing numbers less than 399 with vincular
+            romanExpressionGrammar.stream().forEach(expression -> expression.superVinculize(inputContext));
+            romanExpressionGrammar.stream().forEach(expression -> expression.vinculize(inputContext));
+        }
         romanExpressionGrammar.stream().forEach(expression -> expression.interpret(inputContext));
         //replace double delimiter value with empty string - this is possible after supervincular(vincular with bracket)
         return inputContext.getOutputValue().replaceAll("\\|\\|","");
