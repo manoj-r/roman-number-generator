@@ -2,6 +2,8 @@ package com.aem.exercise.romannumeral.service;
 
 
 import com.aem.exercise.romannumeral.dto.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import java.util.List;
  */
 @Service
 public class RomanNumeralService {
+
+    private Logger LOGGER = LoggerFactory.getLogger(RomanNumeralService.class);
 
     private List<Expression> romanExpressionGrammar;
 
@@ -34,7 +38,7 @@ public class RomanNumeralService {
      * @return - a string representing roman numeral
      */
     public String convertToRoman(long inputNumber) {
-
+        LOGGER.debug("In service method - converting decimal value");
         Context inputContext = new Context();
         inputContext.setInput(inputNumber);
 

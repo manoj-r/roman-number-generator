@@ -5,7 +5,7 @@
         <file>logs/application.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%-7d{yyyy-MM-dd HH:mm:ss:SSS} %m%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 

@@ -1,9 +1,0 @@
-#Prometheus Config
-global:
-  scrape_interval:  5s #set the scrape interval to every 5 seconds.
-  evaluation_interval: 5s
-scrape_configs:
-  - job_name: 'roman-numeral-app'
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-      - targets: ['roman-numeral-app-container:8080']

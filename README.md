@@ -46,13 +46,22 @@ If you don't have Git installed and would like to install it - Refer this link t
 
         git clone https://github.com/manoj-r/roman-numeral-app
         
-- Build: Run the following command from downloaded directory
+- Build: Run the following command from downloaded directory in a terminal/command line window.
 
         mvn clean install
 
+This application uses port 9090 and 3000 for monitoring and visualization. Please make these ports available in your machine.
+
 - Run: 
 
+    Execute the following commands to run the application.
+
+        docker-compose build
         docker-compose up -d
+
+- To stop the running process:
+    
+        docker-compose down
         
 ## Directory/Package Layout
              

@@ -8,25 +8,45 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    networks:
+      monitoring:
+        aliases:
+            - roman-numeral-app
     volumes:
       - ./logs:/usr/app/logs
     container_name: roman-numeral-app-container
 
-  prom:
+  prometheus:
     image: prom/prometheus:v2.9.2
     volumes:
-      - ./prom.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/config.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/data:/prometheus
     ports:
-      - 9090:9090
+      - "9090:9090"
+    networks:
+      monitoring:
+        aliases:
+          - prometheus
     depends_on:
       - roman-numeral-app-container
-    container_name: prom
+    container_name: prometheus
 
   grafana:
     image: grafana/grafana:6.1.4
     ports:
       - "3000:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      monitoring:
+        aliases:
+          - grafana
     depends_on:
-      - prom
+      - prometheus
     container_name: grafana
 
+networks:
+  monitoring:
