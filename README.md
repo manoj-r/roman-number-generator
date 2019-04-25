@@ -7,7 +7,13 @@ roman-numeral-app is a webservice that converts an integer value to equivalent r
 * [Installation](#Installation)
 * [Technologies](#Technologies)
 * [Setup](#Setup)
-* Layout
+* [Directory/Package Layout](#Directory/Package Layout)
+* [Testing](#Testing)
+* [Logging](#Logging)
+* [Metrics](#Metrics)
+* [Monitoring](#Monitoring)
+* [Note](#Note)
+* [References](*References)
 
 ## Technologies
 
@@ -50,8 +56,8 @@ If you don't have Git installed and would like to install it - Refer this link t
 
         mvn clean install
 
-This application uses port 9090 and 3000 for monitoring and visualization. Please make these ports available in your machine.
-
+**This application uses port 9090 and 3000 for monitoring and visualization. Please make these ports available in your machine.**
+*If you cannot free port 9090 and 3000, Please refer the section Note*
 - Run: 
 
     Execute the following commands to run the application.
@@ -77,7 +83,8 @@ This application uses port 9090 and 3000 for monitoring and visualization. Pleas
     |    |── test 
     |    |    |── java                                      # Test source files
     |    |    |── resources                                 # test resources
-    ├── docker                                              # Docker volumes and config location
+    ├── grafana                                             # volume for grafana app - contains dahsboard
+    |__ prometheus                                          # volume for prometheus - also contains prometheus config file
     ├── LICENSE
     └── README.md
     |__ Dockerfile
@@ -98,9 +105,32 @@ SpringBootTest is the framework used for integration test. It checks for appropr
 src/test/java/com/aem/exercise/romannumeral/RomanNumeralIntegrationTests.java contains the integration tests.
 
 
-### Logging
+## Logging
 
-This project uses Logback as the logging framework. Config file for the same can be found in 
+This project uses Logback as the logging framework. Config file for the same can be found in src/main/resources/logback.xml
+Application will create a directory called logs and add a log file when you run the application.
+
+## Metrics
+
+This project uses Spring Boot Actuator for management console which also provides metrics details. 
+Metrics can be found https://localhost:8080/actuator/metrics/<metric name>
+Actuator http://localhost:8080/actuator is the hateos resource for all the management information available.
+
+## Monitoring
+
+Thought Spring Boot Actuator provides necessary tools for Monitoring, this application uses Prometheus and grafana for visualization.
+This can be accessed from 
+
+        http://localhost:3000 
+with credentials (admin/password). A dashboard has already been built and added to the project
+which should automatically when you run docker-compose.
+
+
+## Note
+
+If you are trying to run the application and cannot free port 9090 and 3000, run the below command from project directory 
+
+        mvn spring-boot:run
 
 
 ## Reference
