@@ -7,7 +7,7 @@ roman-numeral-app is a webservice that converts an integer value to equivalent r
 * [Installation](#Installation)
 * [Technologies](#Technologies)
 * [Setup](#Setup)
-* [Directory/Package Layout](#Directory/Package-Layout)
+* [Package Layout](#Package-Layout)
 * [Testing](#Testing)
 * [Logging](#Logging)
 * [Metrics](#Metrics)
@@ -69,7 +69,7 @@ If you don't have Git installed and would like to install it - Refer this link t
     
         docker-compose down
         
-## Directory/Package-Layout
+## Package-Layout
              
     ├── src  
     |    |── main
