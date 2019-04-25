@@ -13,76 +13,75 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class RomanNumeralIntegrationTests {
 
-	@LocalServerPort
-	private int port;
+    @LocalServerPort
+    private int port;
 
-	TestRestTemplate restTemplate = new TestRestTemplate();
+    TestRestTemplate restTemplate = new TestRestTemplate();
 
-	HttpHeaders headers = new HttpHeaders();
+    HttpHeaders headers = new HttpHeaders();
 
-	@Test
-	public void testGetRomanNumeral() {
-		HttpEntity<String> entity = new HttpEntity<>(null, headers);
+    @Test
+    public void testGetRomanNumeral() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(
-				createURLWithPort("/romannumeral?query=1089"),
-				HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/romannumeral?query=1089"),
+                HttpMethod.GET, entity, String.class);
 
-		String expected = "I\u0305LXXXIX";
+        String expected = "MLXXXIX";
 
-		Assert.assertEquals(expected, response.getBody());
-	}
+        Assert.assertEquals(expected, response.getBody());
+    }
 
-	@Test
-	public void test_Url_WithoutQuery() {
-		HttpEntity<String> entity = new HttpEntity<>(null, headers);
+    @Test
+    public void test_Url_WithoutQuery() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(
-				createURLWithPort("/romannumeral"),
-				HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/romannumeral"),
+                HttpMethod.GET, entity, String.class);
 
-		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
-	@Test
-	public void test_UnavailableUrl() {
-		HttpEntity<String> entity = new HttpEntity<>(null, headers);
+    @Test
+    public void test_UnavailableUrl() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(
-				createURLWithPort("/test"),
-				HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/test"),
+                HttpMethod.GET, entity, String.class);
 
-		Assert.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-	}
+        Assert.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
 
-	@Test
-	public void test_OutOfRangeValues() {
-		HttpEntity<String> entity = new HttpEntity<>(null, headers);
+    @Test
+    public void test_OutOfRangeValues() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(
-				createURLWithPort("/romannumeral?query=-5"),
-				HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/romannumeral?query=-5"),
+                HttpMethod.GET, entity, String.class);
 
-		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-	}
-
-
-	@Test
-	public void test_UnsupportedFormatValues() {
-		HttpEntity<String> entity = new HttpEntity<>(null, headers);
-
-		ResponseEntity<String> response = restTemplate.exchange(
-				createURLWithPort("/romannumeral?query=ABC"),
-				HttpMethod.GET, entity, String.class);
-
-		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-		Assert.assertEquals("Unsupported Format - Accepted values are {1-2200000000}", response.getBody());
-	}
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 
 
+    @Test
+    public void test_UnsupportedFormatValues() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-	private String createURLWithPort(String uri) {
-		return "http://localhost:" + port + uri;
-	}
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/romannumeral?query=ABC"),
+                HttpMethod.GET, entity, String.class);
+
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        Assert.assertEquals("Unsupported Format - Accepted values are {1-2200000000}", response.getBody());
+    }
+
+
+    private String createURLWithPort(String uri) {
+        return "http://localhost:" + port + uri;
+    }
 
 }
