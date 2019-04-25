@@ -69,7 +69,7 @@ If you don't have Git installed and would like to install it - Refer this link t
     
         docker-compose down
         
-## Package-Layout
+## Directory/Package-Layout
              
     ├── src  
     |    |── main
