@@ -20,8 +20,8 @@ public abstract class Expression {
 
 
     /**
-     * This method compares input number to value of grammar (based on the subclass/expression) multiplied by 100000
-     * and reduces the value for each iteration and adds vincular with bracket to output value
+     * This method compares input number to value of grammar (--e.g: 9 * multiple()- based on the subclass/type of expression)
+     * multiplied by 100000 and reduces the value for each iteration and adds vincular with bracket to output value
      *
      * @param number
      */
