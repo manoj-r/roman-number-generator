@@ -12,6 +12,7 @@ roman-numeral-app is a webservice that converts an integer value to equivalent r
 * [Logging](#Logging)
 * [Metrics](#Metrics)
 * [Monitoring](#Monitoring)
+* [Swagger](#Swagger)
 * [Note](#Note)
 * [References](#Reference)
 
