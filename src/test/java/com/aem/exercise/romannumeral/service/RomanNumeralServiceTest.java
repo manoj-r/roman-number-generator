@@ -50,12 +50,12 @@ public class RomanNumeralServiceTest {
         Assert.assertEquals("CDXXI", romanNumeralService.convertToRoman(421));
         Assert.assertEquals("CLX", romanNumeralService.convertToRoman(160));
         Assert.assertEquals("CCVII", romanNumeralService.convertToRoman(207));
-        Assert.assertEquals("I\u0305LXVI", romanNumeralService.convertToRoman(1066));
-        Assert.assertEquals("I\u0305DCCLXXVI", romanNumeralService.convertToRoman(1776));
-        Assert.assertEquals("I\u0305CMLIV", romanNumeralService.convertToRoman(1954));
-        Assert.assertEquals("I\u0305CMXC", romanNumeralService.convertToRoman(1990));
-        Assert.assertEquals("I\u0305I\u0305XIV", romanNumeralService.convertToRoman(2014));
-        Assert.assertEquals("I\u0305I\u0305XIX", romanNumeralService.convertToRoman(2019));
+        Assert.assertEquals("MLXVI", romanNumeralService.convertToRoman(1066));
+        Assert.assertEquals("MDCCLXXVI", romanNumeralService.convertToRoman(1776));
+        Assert.assertEquals("MCMLIV", romanNumeralService.convertToRoman(1954));
+        Assert.assertEquals("MCMXC", romanNumeralService.convertToRoman(1990));
+        Assert.assertEquals("MMXIV", romanNumeralService.convertToRoman(2014));
+        Assert.assertEquals("MMXIX", romanNumeralService.convertToRoman(2019));
     }
 
     @Test
