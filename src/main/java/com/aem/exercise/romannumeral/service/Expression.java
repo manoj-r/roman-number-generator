@@ -19,6 +19,12 @@ public abstract class Expression {
     public static char VINCULAR_POWER = '|';
 
 
+    /**
+     * This method compares input number to value of grammar (based on the subclass/expression) multiplied by 100000
+     * and reduces the value for each iteration and adds vincular with bracket to output value
+     *
+     * @param number
+     */
     public void superVinculize(Context number) {
         if (!nine().isEmpty()) {
             while (number.getInput() - (9 * multiple() * 100000) >= 0) {
@@ -60,6 +66,12 @@ public abstract class Expression {
         }
     }
 
+    /**
+     * This method compares input number to value of grammar (based on the subclass/expression) multiplied by 1000
+     * and reduces the value for each iteration and adds a vincular to the output value.
+     *
+     * @param number
+     */
     public void vinculize(Context number) {
         while (number.getInput() - (9 * multiple() * 1000) >= 0) {
             number.append(nine().charAt(0));
@@ -88,6 +100,12 @@ public abstract class Expression {
 
     }
 
+    /**
+     * This method compares input number to value of grammar (based on the subclass/expression) multiplied by 100000
+     * and reduces the value for each iteration.
+     *
+     * @param number
+     */
     public void interpret(Context number) {
         while (number.getInput() - (9 * multiple()) >= 0) {
             number.append(nine());
