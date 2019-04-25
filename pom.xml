@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.aem.exercise</groupId>
 	<artifactId>roman-numeral-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>roman-numeral-app</name>
 	<description>Exercise to convert integer to roman numerical value</description>
 

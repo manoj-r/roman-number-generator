@@ -20,6 +20,11 @@ public class RomanNumeralService {
         romanExpressionGrammar.add(new OneExpression());
     }
 
+    /**
+     *
+     * @param inputNumber - number to be converted to roman numeral
+     * @return - a string representing roman numeral
+     */
     public String convertToRoman(long inputNumber) {
         Context inputContext = new Context();
         inputContext.setInput(inputNumber);

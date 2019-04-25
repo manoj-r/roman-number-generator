@@ -1,6 +1,7 @@
 package com.aem.exercise.romannumeral.controller;
 
 
+import com.aem.exercise.romannumeral.exception.UnsupportedInputException;
 import com.aem.exercise.romannumeral.service.RomanNumeralService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class RomanNumeralController {
     }
 
     /**
-     * A rest controller method exposing a functionality to
+     * A rest controller exposing a functionality to
      * convert an integer to roman numeral.
      * <p>
      * This method is exposed using HTTP 'GET' and can be accessed by calling
@@ -28,14 +29,19 @@ public class RomanNumeralController {
      *
      * @param input - input value to be converted to roman numeral
      * @return a roman numeral for given input
+     * @throws UnsupportedInputException if the input value is not in the accepted value rane
      */
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE + ";charset=utf-8")
-    public ResponseEntity<String> getRomanNumeral(@RequestParam("query") String input) {
-        long inputValue = Long.parseLong(input);
-        if (inputValue >= 1 && inputValue <= 2200000000l) {
-            return ResponseEntity.ok(this.romanNumeralService.convertToRoman(inputValue));
+    public ResponseEntity<String> getRomanNumeral(@RequestParam("query") String input) throws UnsupportedInputException {
+        try {
+            long inputValue = Long.parseLong(input);
+            if (inputValue >= 1 && inputValue <= 2200000000l) {
+                return ResponseEntity.ok(this.romanNumeralService.convertToRoman(inputValue));
+            }
+        } catch (NumberFormatException numberFormatExcpetion) {
+            throw new UnsupportedInputException(input);
         }
-        return ResponseEntity.badRequest().build();
+        throw new UnsupportedInputException(input);
     }
 
 
