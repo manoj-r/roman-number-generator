@@ -11,9 +11,11 @@ public class ExceptionAdviceTest {
 
     @Test
     public void testHandleUnSupportedInputException() {
-        UnsupportedInputException inputException = new UnsupportedInputException("bad value");
+        UnsupportedInputException inputException = new UnsupportedInputException(-5l);
         ResponseEntity<String> adviceResponse = advice.handleUnSupportedInputException(inputException);
         Assert.assertNotNull(adviceResponse);
-        Assert.assertEquals("Input value 'bad value' is not in the range of accepted values {1 - 2200000000}", adviceResponse.getBody());
+        Assert.assertEquals("Input value '-5' is not in the range of accepted values {1 - 2200000000}", adviceResponse.getBody());
     }
+
+
 }

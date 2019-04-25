@@ -16,4 +16,11 @@ public class ExceptionAdvice {
                 .body(exception.toString());
     }
 
+    @ExceptionHandler(NumberFormatException.class)
+    ResponseEntity<String> handleNumberFormatException(NumberFormatException exception) {
+        return ResponseEntity
+                .badRequest()
+                .body("Unsupported Format - Accepted values are {1-2200000000}");
+    }
+
 }

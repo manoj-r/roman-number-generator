@@ -5,8 +5,10 @@ FROM openjdk:8u212-slim
 WORKDIR /usr/app
 
 # Copy JAR into image
-COPY target/app.jar /usr/app/app.jar
+COPY ./target/app.jar /usr/app/app.jar
+
+COPY src/main/resources/logback.xml /usr/app/logback.xml
 
 # run application with this command line
-CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=default", "/usr/app/app.jar"]
+CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=default", "-Dlogging.config=/usr/app/logback.xml", "/usr/app/app.jar"]
 

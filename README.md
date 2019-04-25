@@ -54,23 +54,44 @@ If you don't have Git installed and would like to install it - Refer this link t
 
         docker-compose up -d
         
-## Packaging Layout
-
-
-                   
+## Directory/Package Layout
+             
     ├── src  
     |    |── main
-    |    |    |── java               # Source files  
-    |    |    |── resources          # Resource files (alternatively `lib` or `app`)
+    |    |    |── java                                      # Source files  
+    |    |    |      |── com.aem.exercise.romannumeral
+    |    |    |      |        |── controller                # package to hold rest resource 
+    |    |    |      |        |── service                   # service layer packages that hold classes responsibl for conversion          
+    |    |    |      |        |── exception                 # exception classes       
+    |    |    |      |        |── dto                       # package to hold dtos                
+    |    |    |── resources                                 # Resource files
     |    |── test 
-    |    |    |── java               # Test source files
-    |    |    |── resources          # Automated tests (alternatively `spec` or `tests`)
-    ├── docker                       # Docker volumes and config location
+    |    |    |── java                                      # Test source files
+    |    |    |── resources                                 # test resources
+    ├── docker                                              # Docker volumes and config location
     ├── LICENSE
     └── README.md
     |__ Dockerfile
     |__ docker-compose.yml
-    |__ pom.xml                      # 
+    |__ pom.xml                                             # build file
+
+
+## Testing
+
+### Unit Testing:
+
+Junit is the the testing framework used in the project. Mockito is the mock framework used to mock service objects. 
+All the unit test cases are available under directory src/test.
+
+### Integration Testing
+
+SpringBootTest is the framework used for integration test. It checks for appropriate response codes
+src/test/java/com/aem/exercise/romannumeral/RomanNumeralIntegrationTests.java contains the integration tests.
+
+
+### Logging
+
+This project uses Logback as the logging framework. Config file for the same can be found in 
 
 
 ## Reference

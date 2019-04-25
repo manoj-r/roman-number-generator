@@ -23,7 +23,6 @@ public abstract class Expression {
         if (!nine().isEmpty()) {
             while (number.getInput() - (9 * multiple() * 100000) >= 0) {
                 number.append(VINCULAR_POWER);
-
                 number.append(nine().charAt(0));
                 number.append(OVERLINE);
                 number.append(nine().charAt(1));

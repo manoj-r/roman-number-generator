@@ -23,7 +23,7 @@ public class RomanNumeralControllerTest {
 
     @Test
     public void testGetRomanNumeral() {
-        String input = "3453";
+        Long input = 3453l;
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
         Assert.assertEquals(HttpStatus.OK,romanNumeral.getStatusCode());
@@ -32,7 +32,7 @@ public class RomanNumeralControllerTest {
 
     @Test
     public void testGetRomanNumeral_boundary_low() {
-        String input = "1";
+        Long input = 1l;
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
         Assert.assertEquals(HttpStatus.OK,romanNumeral.getStatusCode());
@@ -41,7 +41,7 @@ public class RomanNumeralControllerTest {
 
     @Test
     public void testGetRomanNumeral_boundary_high() {
-        String input = "2200000000";
+        Long input = 2200000000l;
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
         Assert.assertEquals(HttpStatus.OK,romanNumeral.getStatusCode());
@@ -50,7 +50,7 @@ public class RomanNumeralControllerTest {
 
     @Test(expected = UnsupportedInputException.class)
     public void testGetRomanNumeral_OutOfRange() {
-        String input = "2200000001";
+        Long input = 2200000001l;
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
         Assert.assertEquals(HttpStatus.BAD_REQUEST,romanNumeral.getStatusCode());
@@ -59,7 +59,7 @@ public class RomanNumeralControllerTest {
 
     @Test(expected = UnsupportedInputException.class)
     public void testGetRomanNumeral_unsupportedFormat() {
-        String input = "2200000001";
+        Long input = -5l;
         ResponseEntity<String> romanNumeral = this.romanNumeralController.getRomanNumeral(input);
         Assert.assertNotNull(romanNumeral);
         Assert.assertEquals(HttpStatus.BAD_REQUEST,romanNumeral.getStatusCode());

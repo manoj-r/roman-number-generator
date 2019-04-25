@@ -27,21 +27,16 @@ public class RomanNumeralController {
      * This method is exposed using HTTP 'GET' and can be accessed by calling
      * http://{host:port}/romannumeral?query={input}
      *
-     * @param input - input value to be converted to roman numeral
+     * @param inputValue - input value to be converted to roman numeral
      * @return a roman numeral for given input
      * @throws UnsupportedInputException if the input value is not in the accepted value rane
      */
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE + ";charset=utf-8")
-    public ResponseEntity<String> getRomanNumeral(@RequestParam("query") String input) throws UnsupportedInputException {
-        try {
-            long inputValue = Long.parseLong(input);
-            if (inputValue >= 1 && inputValue <= 2200000000l) {
-                return ResponseEntity.ok(this.romanNumeralService.convertToRoman(inputValue));
-            }
-        } catch (NumberFormatException numberFormatExcpetion) {
-            throw new UnsupportedInputException(input);
+    public ResponseEntity<String> getRomanNumeral(@RequestParam("query") Long inputValue) throws UnsupportedInputException {
+        if (inputValue >= 1 && inputValue <= 2200000000l) {
+            return ResponseEntity.ok(this.romanNumeralService.convertToRoman(inputValue));
         }
-        throw new UnsupportedInputException(input);
+        throw new UnsupportedInputException(inputValue);
     }
 
 

@@ -2,13 +2,13 @@ package com.aem.exercise.romannumeral.exception;
 
 public class UnsupportedInputException extends IllegalArgumentException {
 
-    private String inputValue;
+    private Long inputValue;
 
-    public String getInputValue() {
+    public Long getInputValue() {
         return inputValue;
     }
 
-    public UnsupportedInputException(String inputValue) {
+    public UnsupportedInputException(Long inputValue) {
         super();
         this.inputValue = inputValue;
     }

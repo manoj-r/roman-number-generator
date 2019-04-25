@@ -34,7 +34,7 @@ public class RomanNumeralIntegrationTests {
 	}
 
 	@Test
-	public void test_UnavailableUrl() {
+	public void test_Url_WithoutQuery() {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
 		ResponseEntity<String> response = restTemplate.exchange(
@@ -42,6 +42,17 @@ public class RomanNumeralIntegrationTests {
 				HttpMethod.GET, entity, String.class);
 
 		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+	}
+
+	@Test
+	public void test_UnavailableUrl() {
+		HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+		ResponseEntity<String> response = restTemplate.exchange(
+				createURLWithPort("/test"),
+				HttpMethod.GET, entity, String.class);
+
+		Assert.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 
 	@Test
@@ -65,6 +76,7 @@ public class RomanNumeralIntegrationTests {
 				HttpMethod.GET, entity, String.class);
 
 		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		Assert.assertEquals("Unsupported Format - Accepted values are {1-2200000000}", response.getBody());
 	}
 
 
