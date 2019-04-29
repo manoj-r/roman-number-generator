@@ -132,7 +132,8 @@ This can be accessed from
 with credentials (admin/password). A dashboard has already been built and added to the project
 which should automatically come when you run docker-compose.
 
-Health check can also checked from 
+
+Health check can also be checked from 
 
         http://localhost:8080/actuator/health
 
