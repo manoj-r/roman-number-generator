@@ -130,7 +130,11 @@ This can be accessed from
 
         http://localhost:3000 
 with credentials (admin/password). A dashboard has already been built and added to the project
-which should automatically when you run docker-compose.
+which should automatically come when you run docker-compose.
+
+Health check can also be checked from 
+
+        http://localhost:8080/actuator/health
 
 ## Swagger
 
